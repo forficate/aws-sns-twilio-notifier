@@ -1,13 +1,11 @@
 package com.agileandme.snsalert.core
 
-import spray.httpx.unmarshalling.Unmarshaller
-import spray.http.HttpEntity
-import spray.httpx.unmarshalling.MalformedContent
 import scala.util.Try
-import spray.json._
-import DefaultJsonProtocol._
+
+import spray.http.{ContentTypes,HttpEntity}
 import spray.httpx.marshalling.Marshaller
-import spray.http.ContentTypes
+import spray.httpx.unmarshalling._
+import spray.json._
 
 /**
  * Model AWS messages sent via SNS and deal with Spray's marshalling/unmarshalling of these.

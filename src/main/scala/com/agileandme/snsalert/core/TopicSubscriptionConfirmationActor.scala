@@ -23,18 +23,12 @@
  */
 package com.agileandme.snsalert.core
 
-import akka.actor.Actor
-import spray.http.{HttpEntity}
-import scala.concurrent.duration.{ Duration, FiniteDuration }
-import spray.client.pipelining._
-import scala.concurrent.duration._
-import spray.http._
 import scala.concurrent.Future
+
+import akka.actor.Actor
 import akka.event.Logging
-import spray.httpx.unmarshalling._
-import spray.json._
-import DefaultJsonProtocol._
-import scala.util.Try
+import spray.client.pipelining._
+import spray.http._
 
 
 class TopicSubscriptionConfirmationActor extends Actor {
