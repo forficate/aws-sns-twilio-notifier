@@ -90,7 +90,7 @@ class SNSNotificationListenerServiceSpec extends SpecificationLike with Specs2Ro
         |"UnsubscribeURL" : "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:123456789012:MyTopic:2bcfbf39-05c3-41de-beaa-fcfcc21c8f55"
         |} 
         """.stripMargin
-        
+
       Post("/topiclistener", notificationMsg) ~> routing ~> check {
         response.status mustEqual StatusCodes.OK
         topicAlertActor.expectMsgType[AwsSnsNotification]
