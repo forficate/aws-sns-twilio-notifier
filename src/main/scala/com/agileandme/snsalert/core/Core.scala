@@ -26,7 +26,6 @@ package com.agileandme.snsalert.core
 import akka.actor.{Props, ActorSystem}
 
 trait Config {
-  implicit val system: ActorSystem
   val twilioConfig: TwilioConf
 }
 
