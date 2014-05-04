@@ -23,22 +23,20 @@
  */
 package com.agileandme.snsalert.api
 
-import spray.routing.{ ValidationRejection, Directives }
+import scala.concurrent.ExecutionContext
+import scala.concurrent.duration._
+
+import com.agileandme.snsalert.core.AwsMessages._
+import com.agileandme.snsalert.core.TopicAlertProtocol._
+
 import akka.actor.ActorRef
-import com.agileandme.snsalert.core._
-import spray.http.StatusCodes
 import akka.pattern.ask
 import akka.util.Timeout
-import scala.concurrent.duration._
-import spray.httpx.marshalling.Marshaller
-import spray.http.ContentTypes
-import reflect.ClassTag
-import scala.concurrent.ExecutionContext
+import spray.http.StatusCodes
+import spray.routing.Directives
 
 class SNSNotificationListenerService(subscriptionConfirmationActor: ActorRef, topicAlertActor: ActorRef)(implicit val execctutionContext: ExecutionContext) extends Directives {
 
-  import AwsMessages._
-  import TopicAlertProtocol._
   implicit val timeout = Timeout(5 second)
 
   val route = path("topiclistener") {
