@@ -20,10 +20,10 @@ object AwsMessages {
   
   //Msg wrapper for standard AWS SNS Notifications
   case class AwsSnsNotification(topicArn: String, subject: String, message: String)
-  
-  implicit val awsSnsSubscriptionConfirmationMsgUM: Unmarshaller[AwsSnsSubscriptionConfirmationMsg] = simpleJsonUM { data => 
-  	for {
-  	  JsString(messageType) <- data.get("Type") if messageType == "SubscriptionConfirmation"
+
+  implicit val awsSnsSubscriptionConfirmationMsgUM: Unmarshaller[AwsSnsSubscriptionConfirmationMsg] = simpleJsonUM { data =>
+    for {
+      JsString(messageType) <- data.get("Type") if messageType == "SubscriptionConfirmation"
       JsString(arn) <- data.get("TopicArn")
       JsString(url) <- data.get("SubscribeURL")
     } yield AwsSnsSubscriptionConfirmationMsg(arn, url)
